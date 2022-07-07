@@ -37,40 +37,47 @@ end
 
 def welcome_menu
   puts "Bonjour. Voici les informations dont nous disposons sur toutes les cryptomonnaies répertoriée: "
+  puts ""
   puts "1 - La cryptomonnaie qui a la plus grosse valeur."
   puts "2 - La cryptomonnaie qui a la plus petite valeur. "
   puts "3 - Les devises dont le cours est inférieur à 6000."
   puts "4 - La devise la plus chère parmi celle dont le cours est inférieur à 6000."
   puts "0 - Pour quitter le menu."
+  puts ""
 end
 
 def make_choice(my_hash)
-  puts " Que souhaitez-vous faire ?"
-  puts "(Tapez le chiffre correspondant)"
-  print "> "
-  choice = gets.chomp.to_i
-  if choice == 1
-    big_value = biggest_value(my_hash)
-    puts "La cryptomonnaie avec la plus grosse valeur est: #{big_value}."
-  elsif choice == 2
-    small_value = smallest_value(my_hash)
-    puts "La cryptomonnaie avec la plus petite valeur est: #{small_value}."
-  elsif choice == 3
-    hash_lowerthan6000 = lowerthan6000(my_hash)
-    puts "Les devises dont le cours est inférieur à 6000 sont: "
-    print hash_lowerthan6000.keys
-  elsif choice == 4
-    max_in_low = biggest_value_inlowerthan6000(my_hash)
-    puts "La devise la plus chére parmi celle dont le cours est inférieur à 6000 est: #{max_in_low}"
-  elsif choice == 0
-    puts "Merci de votre visite. À bientôt !"
-  else
-    puts "Vous n'avez pas entré un chiffre de la liste. Veuillez ressayer, merci."
-  end 
+  choice = 1
+  until choice == 0
+    welcome_menu
+    puts " Que souhaitez-vous faire ?"
+    puts "(Tapez le chiffre correspondant)"
+    print "> "
+    choice = gets.chomp.to_i
+    if choice == 1
+      big_value = biggest_value(my_hash)
+      puts "La cryptomonnaie avec la plus grosse valeur est: #{big_value}."
+    elsif choice == 2
+      small_value = smallest_value(my_hash)
+      puts "La cryptomonnaie avec la plus petite valeur est: #{small_value}."
+    elsif choice == 3
+      hash_lowerthan6000 = lowerthan6000(my_hash)
+      puts "Les devises dont le cours est inférieur à 6000 sont: "
+      print hash_lowerthan6000.keys
+    elsif choice == 4
+      max_in_low = biggest_value_inlowerthan6000(my_hash)
+      puts "La devise la plus chére parmi celle dont le cours est inférieur à 6000 est: #{max_in_low}"
+    elsif choice > 4
+      puts "Vous n'avez pas entré un chiffre de la liste. Veuillez ressayer, merci."
+    elsif choice < 0
+      puts "Vous n'avez pas entré un chiffre de la liste. Veuillez ressayer, merci."
+    end 
+    puts ""
+  end
+  puts "Merci de votre visite. À bientôt !"
 end 
 
 def perform(my_hash)
-  welcome_menu
   make_choice(my_hash)
 end 
 

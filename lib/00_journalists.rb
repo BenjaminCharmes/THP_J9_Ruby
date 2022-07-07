@@ -63,6 +63,7 @@ end
 
 def welcome_menu
   puts "Bonjour. Voici les informations dont nous disposons sur cette array de handle twitter:"
+  puts ""
   puts "1 - Combien y a t-il de handle dans cette array ?"
   puts "2 - Quel est le handle le plus court de cette liste ?"
   puts "3 - Combien y-a-t'il de handle contenant 5 caractères ?"
@@ -72,45 +73,51 @@ def welcome_menu
   puts "7 - Quelle est la position dans l'array de la personne @epenser."
   puts "8 - Donner une répartition des handle par taille de ces derniers."
   puts "0 - Pour quitter le menu."
+  puts ""
 end
 
 
 def choose_menu(handle_twitter)
-  welcome_menu
-  puts " Que souhaitez-vous faire ?"
-  puts "(Tapez le chiffre correspondant)"
-  print "> "
-  choice = gets.chomp.to_i
-  if choice == 1
-    howmany = how_many(handle_twitter)
-    puts "Il y a #{howmany} handle dans cette array."
-  elsif choice == 2
-    min_handle = shorter_handle(handle_twitter)
-    puts "Le handle le plus court de cette liste est #{min_handle}."
-  elsif choice == 3
-    sup5_lenght = five_letters(handle_twitter)
-    puts "Il y a #{sup5_lenght} handle contenant 5 caractères."
-  elsif choice == 4
-    firstupper_lenght = maj_first(handle_twitter)
-    puts "Il y a #{firstupper_lenght} handle qui commence par une majuscule."
-  elsif choice == 5
-    alphorder_list = alph_order(handle_twitter)
-    puts "La liste de handle par ordre alphabétique est: #{alphorder_list}"
-  elsif choice == 6
-    acsorder_list = asc_order(handle_twitter)
-    puts "La liste de handle par taille des handle est: #{acsorder_list}"
-  elsif choice == 7
-    epenserpos = epenser_pos(handle_twitter)
-    puts "@epenser est à la #{epenserpos}éme position."
-  elsif choice == 8
-    lengthorder = length_order(handle_twitter)
-    puts "La répartition des handle par taille de ces derniers est: #{lengthorder}."
-    puts "Avec: Nombre de caractères => Nombre de handle"
-  elsif choice == 0
-    puts "Merci de votre visite. À bientôt !"
-  else
-    puts "Vous n'avez pas entré un chiffre de la liste. Veuillez ressayer, merci."
+  choice = 1
+  until choice == 0
+    welcome_menu
+    puts " Que souhaitez-vous faire ?"
+    puts "(Tapez le chiffre correspondant)"
+    print "> "
+    choice = gets.chomp.to_i
+    if choice == 1
+      howmany = how_many(handle_twitter)
+      puts "Il y a #{howmany} handle dans cette array."
+    elsif choice == 2
+      min_handle = shorter_handle(handle_twitter)
+      puts "Le handle le plus court de cette liste est #{min_handle}."
+    elsif choice == 3
+      sup5_lenght = five_letters(handle_twitter)
+      puts "Il y a #{sup5_lenght} handle contenant 5 caractères."
+    elsif choice == 4
+      firstupper_lenght = maj_first(handle_twitter)
+      puts "Il y a #{firstupper_lenght} handle qui commence par une majuscule."
+    elsif choice == 5
+      alphorder_list = alph_order(handle_twitter)
+      puts "La liste de handle par ordre alphabétique est: #{alphorder_list}"
+    elsif choice == 6
+      acsorder_list = asc_order(handle_twitter)
+      puts "La liste de handle par taille des handle est: #{acsorder_list}"
+    elsif choice == 7
+      epenserpos = epenser_pos(handle_twitter)
+      puts "@epenser est à la #{epenserpos}éme position."
+    elsif choice == 8
+      lengthorder = length_order(handle_twitter)
+      puts "La répartition des handle par taille de ces derniers est: #{lengthorder}."
+      puts "Avec: Nombre de caractères => Nombre de handle"
+    elsif choice > 8
+      puts "Vous n'avez pas entré un chiffre de la liste. Veuillez ressayer, merci."
+    elsif choice < 0
+      puts "Vous n'avez pas entré un chiffre de la liste. Veuillez ressayer, merci."
+    end 
+    puts ""
   end
+  puts "Merci de votre visite. À bientôt !"
 end 
 
 def perform(handle_twitter)
