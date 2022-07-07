@@ -114,7 +114,6 @@ def choose_menu(handle_twitter)
 end 
 
 def perform(handle_twitter)
-  welcome_menu
   choose_menu(handle_twitter)
 end 
 
